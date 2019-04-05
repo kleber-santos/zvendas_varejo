@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  	
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8">
+    <title>ArcelorMittal</title>
+    
+    <link rel="icon" type="image/png" href="img/favicon-arcelormittal.png" />
+    <script id="sap-ui-bootstrap"
+      src="resources/sap-ui-core.js"
+      data-sap-ui-libs="sap.m, sap.f, sap.ui.unified"
+      data-sap-ui-theme="sap_belize"
+      data-sap-ui-compatVersion="edge"
+      data-sap-ui-resourceroots='{"arcelor": "./"}'>
+    </script>
+    
+    <script src="http://code.jboxcdn.com/0.3.2/jBox.min.js"></script>
+    
+    <script>
+     // sap.ui.localResources("resources");
+     // jQuery.sap.require('jquery.sap.storage');
+      sap.ui.getCore().attachInit(function() {
+      	
+        //new sap.m.Shell({
+        var shell = new sap.ui.unified.Shell({
+         // user: new sap.ui.unified.ShellHeadUserItem({username:"Nome Usuário"}),
+          //icon: "img/logo-arcelor-3.png",
+           //button : new sap.m.button("logoff"),
+          content: new sap.ui.core.ComponentContainer({
+         //   height : "100%",
+            name : "arcelor"
+           
+          }), 
+          
+        }).placeAt("content");
+      });
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body class="sapUiBody" id="content">
+  </body>
+</html>

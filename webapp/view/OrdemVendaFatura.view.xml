@@ -1,0 +1,171 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m" xmlns:f="sap.f"
+	xmlns:u="sap.ui.unified" xmlns:ff="sap.ui.layout.form" controllerName="arcelor.controller.OrdemVendaFatura" xmlns:arcelor="arcelor.controls">
+	<Page id="page" showNavButton="true" title="Faturamento" navButtonPress="onNavBack" enableScrolling="true">
+		<content>
+			<ff:SimpleForm id="SimpleFormDisplay1" editable="false" layout="ResponsiveGridLayout" title="Buscar Ordem de Venda" columnsL="2"
+				columnsM="2"/>
+			<Panel id="__panel1">
+				<content>
+					<Table id="input-dadosMestres" items="{/DM_FaturarOVSet}" visible="false">
+						<columns>
+							<Column hAlign="Left">
+								<Text text="Codconsulta"/>
+							</Column>
+							<Column hAlign="Left">
+								<Text text="Coddadomestre"/>
+							</Column>
+							<Column hAlign="Left">
+								<Text text="Textodadomestre"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem press="onPress" type="Active">
+								<cells>
+									<Input value="{Codconsulta}"/>
+									<Input value="{Coddadomestre}"/>
+									<Input value="{Textodadomestre}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					<HBox justifyContent="SpaceBetween" width="100%">
+						<VBox width="50%" justifyContent="SpaceBetween">
+							<Label text="N° Ordem:"/>
+							<!--<SearchField id="input-ordem" search="onSearch" placeholder="N° Ordem" tooltip="N° Ordem" width="50%"/>-->
+							<MultiInput id="multiinput-ordem" width="90%" submit="onAddToken" showValueHelp="false"/>
+							<Label text="Data de Remessa:" labelFor="input-DtRemessa"/>
+							<DateRangeSelection id="input-DtRemessa" width="60%" change="handleChange" Placeholder="dd/MM/YYYY - dd/MM.yyyy"/>
+							<HBox justifyContent="SpaceBetween" width="100%">
+								<VBox width="100%" justifyContent="SpaceBetween" alignItems="Center">
+									<Button id="id-buscar" text="Buscar" visible="true" press="onSearch"/>
+								</VBox>
+								<VBox width="100%" justifyContent="SpaceBetween" alignItems="Center">
+									<Button id="id-limpar" text="Limpar Filtros" visible="true" press="handleClearFields"/>
+								</VBox>
+							</HBox>
+						</VBox>
+						<VBox width="50%">
+							<Label text="Emitidas no período:" labelFor="input-dateEmitidas" required="true"/>
+							<DateRangeSelection id="input-dateEmitidas" width="60%" change="handleChange" required="true"/>
+							<Label text="Cliente:"/>
+							<Input id="input-Cliente" type="Text" placeholder="Digite o Cliente ..." width="50%" showSuggestion="true" showValueHelp="true"
+								valueHelpRequest="handleValueHelp" submit="handleValueHelp" suggestionItems="{/ClientesSet}" enabled="true">
+								<suggestionItems>
+									<core:Item text="{Codcliente}"/>
+								</suggestionItems>
+							</Input>
+						</VBox>
+					</HBox>
+				</content>
+			</Panel>
+			<Panel id="__panel2" visible= "false">
+				<content>
+					<HBox justifyContent="SpaceBetween" width="100%">
+						<!--<HBox justifyContent="SpaceBetween" width="100%">
+						<VBox width="100%">-->
+						<VBox width="25%">
+							<Label text="Status Geral:"/>
+							<ComboBox id="combo-geral" placeholder="" width="85%" items="{/modelDataStatusGeral}" selectionChange="onSearchCombo" enabled="true" fieldGroupIds="">
+								<core:Item key="{Coddadomestre}" text="{Coddadomestre} - {Textodadomestre}"/>
+							</ComboBox>
+						</VBox>
+						<VBox width="25%">
+							<Label text="Limbo:"/>
+							<ComboBox id="combo-limbo" placeholder="" width="85%" items="{/modelDataLimbo}" selectionChange="onSearchCombo" enabled="true"
+								fieldGroupIds="">
+								<core:Item key="{Coddadomestre}" text="{Coddadomestre} - {Textodadomestre}"/>
+							</ComboBox>
+						</VBox>
+						<VBox width="25%">
+							<Label text="Crédito:"/>
+							<ComboBox id="combo-credito" placeholder="" width="85%" items="{/modelDataCredito}" selectionChange="onSearchCombo" enabled="true" fieldGroupIds="">
+								<core:Item key="{Coddadomestre}" text="{Coddadomestre} - {Textodadomestre}"/>
+							</ComboBox>
+						</VBox>
+						<VBox width="25%">
+							<Label text="Remessa:"/>
+							<ComboBox id="combo-remessa" placeholder="" width="85%" items="{/modelDataRemessa}" selectionChange="onSearchCombo" enabled="true" fieldGroupIds="">
+								<core:Item key="{Coddadomestre}" text="{Coddadomestre} - {Textodadomestre}"/>
+							</ComboBox>
+						</VBox>
+						<VBox width="25%">
+							<Label text="Fatura:"/>
+							<ComboBox id="combo-fatura" placeholder="" width="85%" items="{/modelDataFatura}" selectionChange="onSearchCombo" enabled="true" fieldGroupIds="">
+								<core:Item key="{Coddadomestre}" text="{Coddadomestre} - {Textodadomestre}"/>
+							</ComboBox>
+						</VBox>
+					</HBox>
+				</content>
+			</Panel>
+			<Table id="List" items="{/OrdemVendaFaturaSet}" showNoData="true" fixedLayout="false" width="auto" growing="true" mode="MultiSelect">
+				<columns>
+					<Column id="nameColumn1" hAlign="Left" width="10%">
+						<Text id="nameColumnTitle" text="N° OV"/>
+					</Column>
+					<Column id="nameColumn2" hAlign="Left">
+						<Text text="Emissor"/>
+					</Column>
+					<Column id="nameColumn4" hAlign="Left" width="10%">
+						<Text text="Valor Total"/>
+					</Column>
+					<Column id="nameColumn5" hAlign="Left" width="3%">
+						<Text text=""/>
+					</Column>
+					<Column id="nameColumn6" hAlign="Left" width="10%">
+						<Text text="Status Geral"/>
+					</Column>
+					<Column id="nameColumn7" hAlign="Left" width="8%">
+						<Text text="Limbo"/>
+					</Column>
+					<Column id="nameColumn8" hAlign="Left" width="8%">
+						<Text text="Crédito"/>
+					</Column>
+					<Column id="nameColumn9" hAlign="Left" width="8%">
+						<Text text="Remessa"/>
+					</Column>
+					<Column id="nameColumn10" hAlign="Left" width="8%">
+						<Text text="Fatura"/>
+					</Column>
+				</columns>
+				<items>
+					<!--<ColumnListItem press="onPress" type="Navigation">-->
+					<ColumnListItem press="onPress" class="statusUIIcon">
+						<cells>
+							<ObjectIdentifier title="{= parseFloat(${Ordem}) }" titleActive="true" titlePress="handleObjectIdentifierPress"/>
+							<!--	<Text text="{= parseFloat(${Ordem}) }"/>
+						<ObjectNumber number="{= parseFloat(${Ordem}) }"/>-->
+							<Text text="{DescCliente}"/>
+							<Text text="{ path: 'ValorOrdem', type: 'sap.ui.model.odata.type.Decimal', constraints: {precision: 15, scale: 2} }"/>
+							<!--<ObjectNumber number="{ path: 'ValorOrdem', type: 'sap.ui.model.odata.type.Decimal', constraints: {precision: 15, scale: 2} }"/>-->
+							<!--<ObjectStatus icon="{path: 'StatusGlobal', formatter: '.status'}" state="Sucess"/>-->
+							<arcelor:StatusIcon src="{path: 'StatusGlobal', formatter: '.status'}" status="{StatusGlobal}"></arcelor:StatusIcon>
+							<Text text="{path: 'GlobalTxt'}"/>
+							<arcelor:StatusIcon src="{path: 'StatusLimbo', formatter: '.status'}" status="{StatusLimbo}"></arcelor:StatusIcon>
+							<arcelor:StatusIcon src="{path: 'StatusCred', formatter: '.status'}" status="{StatusCred}"></arcelor:StatusIcon>
+							<arcelor:StatusIcon src="{path: 'StatusReme', formatter: '.status'}" status="{StatusReme}"></arcelor:StatusIcon>
+							<arcelor:StatusIcon src="{path: 'StatusFatura', formatter: '.status'}" status="{StatusFatura}"></arcelor:StatusIcon>
+							<!--<ObjectStatus
+				class="sapUiSmallMarginBottom"
+				title="Test"
+				active="true"
+				state="Success"
+				icon="sap-icon://alert" />-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<Toolbar>
+				<content>
+			
+					<Button id="button-popover" icon="sap-icon://message-popup" visible="false" text="{/messagesLength}" press="handleMessagePopoverPress"/>
+					<ToolbarSpacer/>
+					<Button id="button-liberarlimbo"   text="Liberar Limbo"   press="handleLiberarLimboPress"/>
+					<Button id="button-liberarcredito" type="Accept" text="Liberar Crédito" press="handleLiberarCreditoPress"></Button>
+					<Button id="button-faturar"        type="Accept" text="Faturar OV"      press="handleFaturarOVPress"></Button>
+				</content>
+			</Toolbar>	
+		</footer>
+	</Page>	
+</mvc:View>

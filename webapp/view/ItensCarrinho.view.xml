@@ -1,0 +1,78 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form" controllerName="arcelor.controller.ItensCarrinho">
+	<App>
+		<pages>
+			<Page title="Visualizar Carrinho" showNavButton="true" navButtonPress="onNavBack" enableScrolling="true">
+				<content>
+					<f:SimpleForm editable="true" layout="ResponsiveGridLayout" enableScrolling="true" minWidth="1024" maxContainerCols="1" columnsL="1" columnsM="1">
+						<Table id="List" items="{path : 'cartProducts>/cartEntries'}" showNoData="true" fixedLayout="false" width="auto" growing="true">
+							<columns>
+								<Column id="nameColumn1" hAlign="Left" width="8%">
+									<Text id="nameColumnTitle" text="Código"/>
+								</Column>
+								<Column id="nameColumn2" hAlign="Left">
+						   			<Text text="Produto"/>
+								</Column>
+						    	<Column id="nameColumn4" hAlign="Left" width="10%">
+						    		<Text text="Preço"/>
+								</Column>
+						    	<Column id="nameColumn6" hAlign="Left" width="5%">
+						    		<Text text="Qtde"/>
+						    	</Column>
+						    	<Column id="nameColumn7" hAlign="Left" width="8%">
+						    		<Text text="Unid"/>
+						    	</Column>
+						    	<Column id="nameColumn9" hAlign="Left" width="8%">
+						        	<Text text="Centro"/>
+						    	</Column>
+						    	<Column id="nameColumn10" hAlign="Left" width="8%">
+						        	<Text text="Tipo Frete"/>
+						    	</Column>
+						    	<Column id="nameColumn12" hAlign="Left" width="10%">
+						        	<Text text="SubTotal"/>
+						    	</Column>
+						    	<Column id="nameColumn13" hAlign="Left" width="6%">
+						        	<Text text=""/>
+						    	</Column>
+							</columns>
+								<items>
+									<ColumnListItem press="onPress" type="Active">
+										<cells>
+											<ObjectNumber number="{= parseFloat(${path : 'cartProducts>Material'}) }"/>
+											<Text text="{cartProducts>Descricao}"/>
+											<ObjectNumber number="{ path: 'cartProducts>PrecoTbSemIPI', type: 'sap.ui.model.odata.type.Decimal', constraints: {precision: 11, scale: 2} }"/>
+											<Input value="{cartProducts>Qtd}" editable="true" class="InputStyle" change="onCartEntriesUpdate"/>
+											<Text text="{cartProducts>Unidade}"/>
+											<Text text="{cartProducts>Centro}"/>
+											<Select>
+												<core:Item key="0" text="CIF Entrega"/>
+												<core:Item key="1" text="EXW - Retira"/>
+											</Select>
+											<ObjectNumber number="{ path: 'cartProducts>ValorTotItem',  type: 'sap.ui.model.odata.type.Decimal', constraints: {precision: 10, scale: 2} }"/>
+										    <Button icon="sap-icon://delete" press="onCartEntriesDelete"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+						</Table>
+					</f:SimpleForm>
+					<f:SimpleForm editable="true" layout="ResponsiveGridLayout" enableScrolling="true" minWidth="1024" maxContainerCols="1" columnsL="1" columnsM="1">
+						
+					<f:content>
+						<Title id="totalPriceText" level="H1" text="Total: {path : 'cartProducts>/cartEntries', formatter : '.formatter.totalPrice'}" textAlign="Right" titleStyle="H1"/>
+					</f:content>
+						
+					</f:SimpleForm>
+				</content>
+				<footer>
+					<Toolbar>
+						<content>
+						    <Button xmlns="sap.m" id="button-comprar" text="Continuar Comprando" press="onNavBack" visible="true" icon="sap-icon://arrow-left"/>
+						</content>
+						<ToolbarSpacer/>
+						<Button id="button-save" text="Fechar Pedido" press="onSaveCart" visible="true"/>
+						<Button id="button-cancel" text="Limpar Carrinho" press="onResetCart" visible="true" icon="sap-icon://delete"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,109 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:u="sap.ui.unified"
+          xmlns:html="http://www.w3.org/1999/xhtml" controllerName="arcelor.controller.Inicio">
+	<App>
+		<pages>
+			<Page navButtonPress="_navBack" showNavButton="{device>/isPhone}">
+		<!--		<u:Shell-->
+		<!--	id="myShell"-->
+		<!--	icon="{/logo}">-->
+		<!--	<u:headItems>-->
+		<!--		<u:ShellHeadItem-->
+		<!--			tooltip="Configuration"-->
+		<!--			icon="sap-icon://menu2"-->
+		<!--			press="handlePressConfiguration" />-->
+		<!--		<u:ShellHeadItem-->
+		<!--			tooltip="Home"-->
+		<!--			icon="sap-icon://home"-->
+		<!--			visible="false"-->
+		<!--			press="handlePressHome" />-->
+		<!--	</u:headItems>-->
+		<!--	<u:headEndItems>-->
+		<!--		<u:ShellHeadItem-->
+		<!--			icon="sap-icon://log"-->
+		<!--			tooltip="Logoff"-->
+		<!--			press="handleLogoffPress" />-->
+		<!--	</u:headEndItems>-->
+		<!--	<u:user>-->
+		<!--		<u:ShellHeadUserItem-->
+		<!--			image="sap-icon://person-placeholder"-->
+		<!--			username="Karl Mustermann"-->
+		<!--			press="handleUserItemPressed" />-->
+		<!--	</u:user>-->
+		<!--	<u:search>-->
+		<!--		<SearchField-->
+		<!--			search="handleSearchPressed"/>-->
+		<!--	</u:search>-->
+		<!--	<u:paneContent>-->
+		<!--		<Text text="Lorem ipsum" />-->
+		<!--	</u:paneContent>-->
+		<!--</u:Shell>-->
+			<content>
+			    <Panel id="__panel2" backgroundDesign="Transparent"/>
+			    <Panel id="__panel3" backgroundDesign="Transparent"/>
+			    <Panel id="__panel4" backgroundDesign="Transparent"/>
+			    <Panel id="__panel1" backgroundDesign="Transparent"/>
+			    <VBox width="100%" direction="Column" id="__vbox0"/>
+			    <HBox width="100%" id="__hbox0">
+			    	
+			    	 <!--Image width="500px" id="__image10" src="img/ArcelorMittalLogoGrande.png" press="on"/!-->
+				    <!--items>
+				       <IconTabBar id="idIconTabBarMulti" expanded="false" class="sapUiResponsiveContentPadding" visible="false">
+						<items>
+							<IconTabFilter icon="sap-icon://task" count="10" text="Tarefas">
+								<Text text="Info content goes here ..."/>
+							</IconTabFilter>
+							
+							<IconTabFilter icon="sap-icon://map" count="3" text="Roterização">
+								<Text text="Attachments go here ..."/>
+							</IconTabFilter>
+							
+							<IconTabFilter icon="sap-icon://area-chart" count="12" text="Relatórios">
+								<Text text="Notes go here ..."/>
+							</IconTabFilter>
+							
+							<IconTabFilter icon="sap-icon://email" text="Notificações" count="5">
+								<Text text="People content goes here ..."/>
+							</IconTabFilter>
+							
+								<IconTabFilter icon="sap-icon://customer-financial-fact-sheet" text="Financeiro">
+								<Text text="Info content goes here ..."/>
+							</IconTabFilter>
+							
+							<IconTabFilter icon="sap-icon://expense-report" count="3" text="Fiscal">
+								<Text text="Attachments go here ..."/>
+							</IconTabFilter>
+							
+						</items>
+					  </IconTabBar>
+				    </items!-->
+				    <items></items>
+					    <HBox width="100%" id="__hbox1"/>
+					    <VBox width="100%" direction="Column" id="__vbox2">
+					    	  <Image width="450px" id="__image15" src="image/ArcelorMittalLogoGrande.png" press="on"/>
+					    </VBox>
+				<HBox width="100%" id="__hbox3"/>
+				    
+			    </HBox>
+			    <Panel id="__panel0" visible="false">
+			    <content>
+			        <HBox width="100%" id="__hbox5">
+			        	  <items>
+			            	 <HBox width="8%" id="__hbox6">
+			            	 	 <core:Icon src="sap-icon://opportunities" size="2em" id="__icon0"/>
+			            	 </HBox>
+			            	  <HBox width="100%" id="__hbox7">
+			            	 	  <Label text="Oportunidade e Ocorrências" width="100%" id="__label0"/>
+			            	 </HBox>
+			            </items>
+			        </HBox>
+			    </content>
+			    </Panel>
+			</content>
+			<footer>
+				<Bar>
+				</Bar>
+			</footer>	
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

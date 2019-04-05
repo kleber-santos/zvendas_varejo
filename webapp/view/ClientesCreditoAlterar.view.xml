@@ -1,0 +1,110 @@
+<mvc:View xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" xmlns:mvc="sap.ui.core.mvc" 
+          xmlns="sap.m" xmlns:f="sap.ui.layout.form" height="100%" controllerName="arcelor.controller.ClientesCreditoAlterar">
+	<NavContainer id="wizardNavContainer">
+		<pages>
+			<Page id="wizardContentPage" showHeader="true" navButtonPress="onNavBack" title="Alterar Crédito" showNavButton="true">
+				<f:Form id="FormDisplay354"
+						minWidth         = "1024"
+						maxContainerCols = "2"
+						editable         = "true">
+					<f:title>
+						<core:Title text="" />
+					</f:title>
+					<f:layout>
+						<f:ResponsiveGridLayout
+							labelSpanL = "3"
+							labelSpanM = "3"
+							emptySpanL = "4"
+							emptySpanM = "4"
+							columnsL   = "1"
+							columnsM   = "1" />
+					</f:layout>
+					<f:formContainers>
+						<f:FormContainer>
+							<f:formElements>
+								
+								<f:FormElement label="Pesquisar Cliente">
+									<f:fields>
+										<Input id="show-GrupoAtual" type="Text" placeholder="Digite o Cliente ..." width="100%" showSuggestion="true" showValueHelp="true" valueHelpRequest="handleValueHelp" submit="handleValueHelp" suggestionItems="{/DM_GrupoResponsavelSet}" change="onFocus" fieldWidth="100%">
+											<suggestionItems>
+												<core:Item key="{Grupocredito}" text="{Grupocredito} - {Texto}"/>
+											</suggestionItems>
+										</Input>
+									</f:fields>
+								</f:FormElement>
+								
+								<f:FormElement label="Cliente">
+									<f:fields>
+										<Text id="show-Cliente"/>
+									</f:fields>
+								</f:FormElement>
+								
+								<f:FormElement label="Nome">
+									<f:fields>
+										<Text id="show-Nome"/>
+									</f:fields>
+								</f:FormElement>
+								
+								<f:FormElement label="Limite Total">
+									<f:fields>
+										<Text id="show-LimiteTotal"/>
+									</f:fields>
+								</f:FormElement>
+								
+								<f:FormElement label="Limite Individual">
+									<f:fields>
+										<Text id="show-LimiteIndividual" />
+									</f:fields>
+								</f:FormElement>
+								
+								<f:FormElement label="Limite de Crédito">
+									<f:fields>
+										<Input id="input-LimiteCredito" width="50%" enabled="false" liveChange="onMaskNumberValue" />
+									</f:fields>
+								</f:FormElement>
+								
+								<f:FormElement label="Grupo de Responsáveis">
+									<f:fields>
+										<Text id="show-Gruporesponsavel" />
+									</f:fields>
+								</f:FormElement>
+								
+								<f:FormElement label="Data da Verificação Seguinte">
+									<f:fields>
+										<DatePicker id="input-DtVerificacao" enabled="false" valueFormat="dd/MM/yyyy" displayFormat="dd/MM/yyyy" width="50%"/>
+									</f:fields>
+								</f:FormElement>
+								
+								<!--<f:FormElement label="Pagamento Antecipado" >-->
+								<!--	<f:fields>-->
+								<!--		<CheckBox id="input-PagamentoAntecipado" visible="false" />-->
+								<!--	</f:fields>-->
+								<!--</f:FormElement>-->
+								
+								<!--<f:FormElement label="Bloquear Cliente">-->
+								<!--	<f:fields>-->
+								<!--		<CheckBox id="input-BloquearCliente" visible="false" />-->
+								<!--	</f:fields>-->
+								<!--</f:FormElement>-->
+								
+								<f:FormElement label="Classe Risco">
+									<f:fields>
+										<Input id="input-ClasseRisco" width="30%" enabled="false" maxLength="2"/>
+									</f:fields>
+								</f:FormElement>
+							
+							</f:formElements>
+						</f:FormContainer>
+					</f:formContainers>
+				</f:Form>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button id="button-save"   text="Salvar"   press="handleWizardSubmit" visible="false"/>
+						<Button id="button-cancel" text="Cancelar" press="handleWizardCancel" visible="false"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</NavContainer>
+</mvc:View>

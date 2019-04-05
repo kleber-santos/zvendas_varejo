@@ -1,0 +1,176 @@
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:smartForm="sap.ui.comp.smartform" xmlns:smartField="sap.ui.comp.smartfield" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" controllerName="arcelor.controller.ProdutosDetalhe" class="sapUiSizeCompact" height="100%">
+<App>
+	<pages>
+		<Page title="Detalhes do Produto" showNavButton="true" navButtonPress="onNavBack">
+			<List>
+				 <CustomListItem>
+				 	 <HBox class="sapUiSmallMarginTop sapUiSmallMarginBottom sapUiSmallMarginBegin">
+				 	 	<Image id="imgProduto" mode="Image" width="200px" height="200px"> 
+		                    <detailBox>
+		                        <LightBox>
+		                            <LightBoxItem imageSrc="{Urlprod}" alt="{Texto}" title="{Descrprod}" subtitle="{Infoprod} - {Descrprod}"/>
+		                        </LightBox>
+		                    </detailBox>
+	                	</Image>
+	                	<VBox class="sapUiSmallMarginBegin">
+	                    	<Title text="{Descrprod}" width="200%" id="__label0"/>
+	                    	<!--Text text="Cód. {Codproduto}"/!-->
+	                    	<HBox width="100%" id="__hbox13">
+	                    	    <items>
+	                    	    	<Text text="Cód. "/>
+	                    	        <ObjectNumber number="{= parseFloat(${Codproduto}) }"/>
+	                    	    </items>
+	                    	</HBox>
+	                    	<ToolbarSpacer/>
+	                    	<HBox width="100%" id="__hbox12">
+	                    	    <items>
+	                    	        <Panel id="__panel11" backgroundDesign="Transparent"/>
+	                    	    </items>
+	                    	</HBox>
+	                    	<Text text="{Infoprod}"/>
+	                    	<ToolbarSpacer/>
+	                    	<ToolbarSpacer/>
+	                    	<ToolbarSpacer/>
+	                    	<HBox>
+	                    	<items>
+	                    	    <Panel id="__panel0" backgroundDesign="Transparent"/>
+	                    	</items>
+	                    	</HBox>
+	                    	<HBox width="100%" id="__hbox2">
+	                    	    <items>
+	                    	        <Panel id="__panel1" backgroundDesign="Transparent"/>
+	                    	    </items>
+	                    	</HBox>
+	                    	<HBox width="100%" id="__hbox3">
+	                    	    <items>
+	                    	        <Image width="200px" id="__image4" src="image/Comprar.PNG" tooltip="Comprar" visible="false"/>
+	                    	    </items>
+	                    	</HBox>
+	                    	<HBox width="100%" id="__hbox22">
+	                    		  <items>
+	                    		  	<HBox width="100%" id="__hbox26">
+	                    		  		<!--items>
+	                    	        		<Image width="50px" height="50px" id="__image5" />
+	                    	        	</items>
+	                    	        	<ToolbarSpacer/>
+	                    	        	<items>
+	                    	        		<Image width="50px" height="50px" id="__image36" />
+	                    	        	</items!-->
+	                    	        	<items>
+	                    	        		<ToolbarSpacer width="300PX"/>
+	                    	        		<Image width="50px" height="50px" id="__image35" src="image/Estoque.PNG" press="onPress" tooltip="Estoque"/>
+	                    	        	</items>
+	                    	        </HBox> 
+	                    	    </items>
+	                    	</HBox>
+	                    <items/>
+	                    </VBox>
+					</HBox>
+				</CustomListItem>
+				
+				<CustomListItem>
+					<Panel backgroundDesign="Transparent">
+						<Hbox width="100%" id="__hbox40">
+						 <Hbox width="40%" id="__hbox32"/>	
+						 <Text text="RECOMENDAÇÕES DOS PRODUTOS"/>  
+						 <Hbox width="30%" id="__hbox31"/>
+						</Hbox>
+					</Panel>
+		            <HBox class="sapUiSmallMarginTop sapUiSmallMarginBottom sapUiSmallMarginBegin">
+		            	
+		            	<HBox width="100%" id="__hbox0"/>
+		                <HBox width="100%" id="__hbox8">
+		                    <items>
+		                        <Image width="100px" height="100px" id="__image8" src="image/arame1.png" visible="false"/>
+		                    </items>
+		                </HBox>
+		                <HBox width="100%" id="__hbox7">
+		                    <items>
+		                        <Image width="100px" height="100px" id="__image9" src="image/arame1.png" visible="false"/>
+		                    </items>
+		                </HBox>
+		                <HBox width="100%" id="__hbox6">
+		                    <items>
+		                        <Image width="100px" height="100px" id="__image10" src="image/arame1.png" visible="false"/>
+		                    </items>
+		                </HBox>
+		                <HBox width="100%" id="__hbox4">
+		                    <items>
+		                        <Image width="100px" height="100px" id="__image11" src="image/arame1.png" visible="false"/>
+		                    </items>
+		                </HBox>
+		                <HBox width="100%" id="__hbox5">
+		                    <items>
+		                        <Image width="100px" height="100px" id="__image12" src="image/arame1.png" visible="false"/>
+		                    </items>
+		                </HBox>
+		                <HBox width="100%" id="__hbox9">
+		                    <items>
+		                        <Image width="100px" height="100px" id="__image13" src="image/arame1.png" visible="false"/>
+		                    </items>
+		                </HBox>
+		            <items>
+		                <HBox width="100%" id="__hbox10">
+		                    <items>
+		                        <Image width="100px" height="100px" id="__image7"/>
+		                    </items>
+		                </HBox>
+		            </items>
+		            </HBox>
+		        </CustomListItem>
+		        
+		        <CustomListItem>
+			        	<Panel backgroundDesign="Transparent">
+							<Hbox width="100%" id="__hbox33">
+								<Hbox width="40%" id="__hbox34"/>	
+									<Text text="INFORMAÇÕES DOS PRODUTOS"/>  
+								<!--Hbox width="30%" id="__hbox35"/!-->
+							</Hbox>
+						</Panel>
+		            <HBox class="sapUiSmallMarginTop sapUiSmallMarginBottom sapUiSmallMarginBegin">
+			            <HBox width="70%" id="__hbox16">
+				              <items>
+				              	 <VBox id="__hbox1" justifyContent="Center" width="70%">
+							  		 <items>
+						             </items>
+							  	 </VBox>
+				              </items>
+			              </HBox>
+			            <VBox width="100%" id="__hbox18">
+			              <items>
+			              	<core:Icon id="aplicacao" src="sap-icon://thumb-up" class="size1" color="#031E48" height="120px" size="100px" press="onPressAplicacao">
+								<!--core:layoutData>
+									<FlexItemData growFactor="1"/>
+								</core:layoutData!-->
+							</core:Icon>
+			              </items>
+			              <items>
+			              	<Text text="Aplicação"/>
+			              </items>
+			            </VBox>
+			            <items>
+			                <VBox xmlns="sap.m" id="__hbox30" justifyContent="Center" width="100%">
+								<items>
+								    <core:Icon id="recomendacao" src="sap-icon://world" class="size1" color="#031E48" height="120px" size="100px" press="onPressRecomendacao">
+								  		<!--core:layoutData>
+								  			<FlexItemData xmlns="sap.m" growFactor="1"/>
+								  		</core:layoutData!-->
+								  	</core:Icon>
+								</items>
+								<items>
+									<Text text="Recomendação"/>
+								</items>
+							</VBox>
+			            </items>
+		            </HBox>
+		        </CustomListItem>
+			</List>
+			<content/>	
+			<footer>
+				<Bar>
+				</Bar>
+			</footer>
+		</Page>
+	</pages>
+</App>
+</core:View>

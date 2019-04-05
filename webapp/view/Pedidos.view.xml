@@ -1,0 +1,52 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="arcelor.controller.Pedidos">
+	<App>
+		<pages>
+			<Page title="Pedidos" showNavButton="false">
+				<content>
+				<Panel id="__panel0">
+					<content>
+						<HBox id="__hbox0" justifyContent="Center" width="100%">
+							<items>
+								<HBox width="100%" id="__hbox3"/>
+								<VBox id="__hbox1" justifyContent="Center" width="100%" alignItems="Center">
+									<items>
+										<Image xmlns="sap.m" id="__image2" width="140px" press="actionVendas" src="image/CriarPedido.png" height="140px" tooltip="Criar Pedido"/>
+										<Label text="CRIAR PEDIDO" width="100%" id="__labe22" textAlign="Center"/>
+									</items>
+								</VBox>
+								<VBox id="__hbox2" justifyContent="Center" width="100%" alignItems="Center">
+									<items>
+										<Image xmlns="sap.m" id="__image3" width="140px" press="actionOrdemVendaFatura" src="image/BuscarOrdem.png" height="140px" tooltip="Buscar Ordem"/>
+										<Label text="BUSCAR PEDIDO" width="100%" id="__labe23" textAlign="Center"/>
+									</items>
+								</VBox>
+								<HBox id="__hbox4" justifyContent="Center" width="100%">
+									<items>
+										<HBox width="100%" id="__hbox5"/>
+									</items>
+								</HBox>
+							</items>
+							<items> </items>
+						</HBox>
+						
+					</content>
+				</Panel>
+				<Panel id="__panel1" backgroundDesign="Transparent"/>
+				<Panel id="__panel2" backgroundDesign="Transparent"/>
+				<VBox width="100%" direction="Column" id="__vbox0"/>
+				<HBox width="100%" id="__hbox6"/>
+				<HBox width="100%" id="__hbox9"/>
+					  <HBox width="100%" id="__hbox8">
+					  	<HBox width="100%" id="__hbox7"/>
+					   <Image width="500px" id="__image15" src="img/ArcelorMittalLogoGrande.png" press="on"/>	
+					   <HBox width="100%" id="__hbox12"/>
+				</HBox>
+			</content>
+				<footer>
+				<Bar>
+				</Bar>
+			</footer>	
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

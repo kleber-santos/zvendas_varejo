@@ -1,0 +1,779 @@
+{
+	"_version": "1.4.0",
+	"sap.app": {
+		"id": "arcelor",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/sap/ZCHSD_VENDASVAREJO_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"ZCHSD_VENDASVAREJO_SRV": {
+				"uri": "/sap/opu/odata/sap/ZCHSD_VENDASVAREJO_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/ZCHSD_VENDASVAREJO_SRV/metadata.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponent",
+			"version": "0.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://detail-view",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_bluecrystal"
+		]
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "arcelor.view.App",
+			"type": "XML",
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.38.0",
+			"libs": {
+				"sap.ui.core": {
+					"minVersion": "1.38.0"
+				},
+				"sap.m": {
+					"minVersion": "1.38.0"
+				},
+				"sap.ushell": {
+					"minVersion": "1.38.0"
+				},
+				"sap.collaboration": {
+					"minVersion": "1.38",
+					"lazy": true
+				}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "arcelor.i18n.i18n"
+				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},		
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "arcelor.view",
+				"controlId": "idAppControl",
+				"controlAggregation": "detailPages",
+				"bypassed": {
+					"target": [
+						"master",
+						"notFound"
+					]
+				},
+				"async": "true"
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "master",
+					"target": [
+						"inicio",
+						"master"
+					]
+				},
+				{
+					"pattern": "MenuSet/{Id}",
+					"name": "inicio",
+					"target": [
+						"master",
+						"inicio"
+					]
+				},
+				{
+					"pattern": "MenuSet/{Id}",
+					"name": "produtos",
+					"target": [
+						"master",
+						"produtos"
+					]
+				},
+				{
+					"pattern": "MenuSet/{Id}",
+					"name": "clientes",
+					"target": [
+						"master",
+						"clientes"
+					]
+				},
+				{
+					"pattern": "MenuSet/{Id}",
+					"name": "pedidos",
+					"target": [
+						"master",
+						"pedidos"
+					]
+				},
+				{
+					"pattern": "MenuSet/{Id}",
+					"name": "caixa",
+					"target": [
+						"master",
+						"caixa"
+					]
+				},
+				{
+					"pattern": "MenuSet/{Id}",
+					"name": "cancelamento",
+					"target": [
+						"master",
+						"cancelamento"
+					]
+				},
+				{
+					"pattern": "MenuSet/{Id}",
+					"name": "recebimento",
+					"target": [
+						"master",
+						"recebimento"
+					]
+				},
+				{
+					"pattern": "MenuSet/{Id}",
+					"name": "clientescadastro",
+					"target": [
+						"master",
+						"clientescadastro",
+						"clientes"
+					]
+				},
+				{
+					"pattern": "MenuSet/{Id}",
+					"name": "clientescreditoalterar",
+					"target": [
+						"master",
+						"clientescreditoalterar",
+						"clientes"
+					]
+				},
+				{
+					"pattern": "MenuSet/{Id}",
+					"name": "object",
+					"target": [
+						"master",
+						"object"
+					]
+				},
+				{
+					"pattern": "clientesdetalhe/{Id}",
+					"name": "clientesdetalhe",
+					"target": [
+						"clientesconsulta",
+						"clientesdetalhe"
+					]
+				},
+				{
+					"pattern": "produtosdetalhe/{Id}",
+					"name": "produtosdetalhe",
+					"target": [
+						"produtos",
+						"produtosdetalhe"
+					]
+				},
+				{
+					"pattern": "produtosestoque/{Id}",
+					"name": "produtosestoque",
+					"target": [
+						"produtosdetalhe",
+						"produtosestoque"
+					]
+				},
+				{
+					"pattern": "produtos",
+					"name": "Produtos",
+					"target": [
+						"produtos"
+					]
+				},
+				{
+					"pattern": "pedidos",
+					"name": "Pedidos",
+					"target": [
+						"pedidos"
+					]
+				},
+				{
+					"pattern": "produtosdetalhe",
+					"name": "ProdutosDetalhe",
+					"target": [
+						"produtosdetalhe"
+					]
+				},
+				{
+					"pattern": "pagamento",
+					"name": "Pagamento",
+					"target": [
+						"revisaovenda",
+						"pagamento"
+					]
+				},
+				{
+					"pattern": "vendas",
+					"name": "Vendas",
+					"target": [
+						"pedidos",
+						"vendas"
+					]
+				},
+				{
+					"pattern": "revisaovenda",
+					"name": "RevisaoVenda",
+					"target": [
+						"vendas",
+						"revisaovenda"
+					]
+				},
+				{
+					"pattern": "clientesconsulta",
+					"name": "ClientesConsulta",
+					"target": [
+						"clientesconsulta"
+					]
+				},
+				{
+					"name": "ClientesCadastro",
+					"pattern": "ClientesCadastro",
+					"target": [
+						"clientescadastro"
+					]
+				},
+				{
+					"name": "ClientesCreditoAlterar",
+					"pattern": "ClientesCreditoAlterar",
+					"target": [
+						"clientescreditoalterar"
+					]
+				},
+				{
+					"name": "ClientesCreditoTransfResp",
+					"pattern": "ClientesCreditoTransfResp",
+					"target": [
+						"clientescreditotransfresp"
+					]
+				},
+				{
+					"pattern": "itenscarrinho/{Id}",
+					"name": "itenscarrinho",
+					"target": [
+						"vendas",
+						"itenscarrinho"
+					]
+				},
+				{
+					"name": "Clientes",
+					"pattern": "Clientes",
+					"target": [
+						"clientes"
+					]
+				},
+				{
+					"pattern": "Faturamento",
+					"name": "Faturamento",
+					"target": [
+						"faturamento"
+					]
+				},
+				{
+					"pattern": "OrdemVendaFatura",
+					"name": "OrdemVendaFatura",
+					"target": [
+						"ordemvendafatura"
+					]
+				}
+			],
+			"targets": {
+				"master": {
+					"viewName": "Master",
+					"viewLevel": 1,
+					"viewId": "master",
+					"controlAggregation": "masterPages",
+					"routerClass": "sap.m.routing.Router",
+					"viewType": "XML",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"bypassed": {
+						"target": [
+							"master",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"object": {
+					"viewName": "Detail",
+					"viewId": "detail",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewType": "XML",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"master",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"inicio": {
+					"viewName": "Inicio",
+					"viewId": "inicio",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewType": "XML",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"master",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"produtos": {
+					"viewName": "Produtos",
+					"viewId": "produtos",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewType": "XML",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"master",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"clientes": {
+					"viewName": "Clientes",
+					"viewId": "clientes",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewType": "XML",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"master",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"pedidos": {
+					"viewName": "Pedidos",
+					"viewId": "pedidos",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewType": "XML",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"master",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"caixa": {
+					"viewName": "Caixa",
+					"viewId": "caixa",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewType": "XML",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"master",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"cancelamento": {
+					"viewName": "Cancelamento",
+					"viewId": "cancelamento",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewType": "XML",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"master",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"recebimento": {
+					"viewName": "Recebimento",
+					"viewId": "recebimento",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewType": "XML",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"master",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"clientescadastro": {
+					"viewType": "XML",
+					"viewName": "ClientesCadastro",
+					"viewId": "clientescadastro",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"clientes",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"clientescreditoalterar": {
+					"viewType": "XML",
+					"viewName": "ClientesCreditoAlterar",
+					"viewId": "clientescreditoalterar",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"clientes",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"clientescreditotransfresp": {
+					"viewType": "XML",
+					"viewName": "ClientesCreditoTransfResp",
+					"viewId": "clientescreditotransfresp",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"clientes",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"itenscarrinho": {
+					"viewType": "XML",
+					"viewName": "ItensCarrinho",
+					"viewId": "itenscarrinho",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"vendas",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"revisaovenda": {
+					"viewType": "XML",
+					"viewName": "RevisaoVenda",
+					"viewId": "revisaovenda",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"revisaovenda",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"pagamento": {
+					"viewType": "XML",
+					"viewName": "Pagamento",
+					"viewId": "pagamento",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"pagamento",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"clientesconsulta": {
+					"viewType": "XML",
+					"viewName": "ClientesConsulta",
+					"viewId": "clientesconsulta",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"clientes",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"faturamento": {
+					"viewType": "XML",
+					"viewName": "Faturamento",
+					"viewId": "faturamento",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"clientes",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"ordemvendafatura": {
+					"viewType": "XML",
+					"viewName": "OrdemVendaFatura",
+					"viewId": "ordemvendafatura",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"pedidos",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"vendas": {
+					"viewType": "XML",
+					"viewName": "Vendas",
+					"viewId": "vendas",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"pedidos",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"clientesdetalhe": {
+					"viewType": "XML",
+					"viewName": "ClientesDetalhe",
+					"viewId": "clientesdetalhe",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"clientesconsulta",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"produtosdetalhe": {
+					"viewType": "XML",
+					"viewName": "ProdutosDetalhe",
+					"viewId": "produtosdetalhe",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"produtos",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"produtosestoque": {
+					"viewType": "XML",
+					"viewName": "ProdutosEstoque",
+					"viewId": "produtosestoque",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"produtosdetalhe",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"create": {
+					"viewName": "CreateEntity",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"viewType": "XML",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"master",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"detailObjectNotFound": {
+					"viewName": "DetailObjectNotFound",
+					"viewId": "detailObjectNotFound",
+					"routerClass": "sap.m.routing.Router",
+					"viewType": "XML",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"master",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"detailNoObjectsAvailable": {
+					"viewName": "DetailNoObjectsAvailable",
+					"viewId": "detailNoObjectsAvailable",
+					"routerClass": "sap.m.routing.Router",
+					"viewType": "XML",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"master",
+							"notFound"
+						]
+					},
+					"async": "true"
+				},
+				"notFound": {
+					"viewName": "NotFound",
+					"viewId": "notFound",
+					"routerClass": "sap.m.routing.Router",
+					"viewType": "XML",
+					"viewPath": "arcelor.view",
+					"controlId": "idAppControl",
+					"controlAggregation": "detailPages",
+					"bypassed": {
+						"target": [
+							"master",
+							"notFound"
+						]
+					},
+					"async": "true"
+				}
+			}
+		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zvendas_varejo",
+		"_version": "1.1.0"
+	}
+}

@@ -1,0 +1,117 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="arcelor.controller.Clientes">
+ <App>
+	<pages>
+		<Page title="Clientes" showNavButton="{device>/isPhone}">
+		<!--	<landmarkInfo>-->
+		<!--		<PageAccessibleLandmarkInfo-->
+		<!--			rootRole="Region"-->
+		<!--			rootLabel="{i18n>Welcome_rootLabel}"-->
+		<!--			contentRole="Main"-->
+		<!--			contentLabel="{i18n>Welcome_contentLabel}"-->
+		<!--			headerRole="Region"-->
+		<!--			headerLabel="{i18n>Welcome_headerLabel}"/>-->
+		<!--</landmarkInfo>-->
+		<!--<customHeader>-->
+		<!--	<Bar>-->
+		<!--		<contentLeft>-->
+					<!--<Button-->
+					<!--	icon="sap-icon://menu2"-->
+					<!--	press=".onShowCategories"-->
+					<!--	visible="{appView>/smallScreenMode}"/>-->
+		<!--		</contentLeft>-->
+		<!--		<contentMiddle>-->
+		<!--			<Title-->
+		<!--				level="H2"-->
+		<!--				tooltip="{i18n>welcomeDescription}"-->
+		<!--				text="Produtos"/>-->
+		<!--		</contentMiddle>-->
+		<!--		<contentRight>-->
+					<!--<Button-->
+					<!--	icon="sap-icon://customer"-->
+					<!--	press=".onAvatarPress"-->
+					<!--	tooltip="{i18n>avatarButtonTooltip}"/>-->
+					 
+					<!--<ToggleButton-->
+					<!--	icon="sap-icon://cart"-->
+					<!--	pressed="{= ${appView>/layout}.startsWith('ThreeColumns') }"-->
+					<!--	tooltip="{i18n>toCartButtonTooltip}"-->
+					<!--	press="onVisualizarCarrinho"-->
+					<!--	text="1">-->
+					<!--</ToggleButton>-->
+		<!--			<Button icon="sap-icon://customer"-->
+		<!--					text="Kleber Moraes" -->
+		<!--			        type="Transparent" -->
+		<!--			        press="handleUserNamePress">-->
+		<!--	            <layoutData>-->
+		<!--	                <OverflowToolbarLayoutData priority="NeverOverflow" />-->
+		<!--	            </layoutData>-->
+		<!--	        </Button>-->
+		<!--		</contentRight>-->
+		<!--	</Bar>-->
+		<!--</customHeader>-->
+			<content>
+				<Panel id="__panel0">
+					<content>
+						<HBox id="__hbox0" justifyContent="Center" width="100%">
+							<items>
+								<HBox width="100%" id="__hbox3"/>
+								<VBox id="__hbox1" justifyContent="Center" width="100%" alignItems="Center">
+									<items>
+										<Image xmlns="sap.m" id="__image2" width="140px" press="actionConsulta" src="image/Consultar_Cliente.PNG" height="140px" tooltip="Consultar Cliente"/>
+										<Label text="CONSULTAR CLIENTES" width="100%" id="__labe22" textAlign="Left"/>
+									</items>
+								</VBox>
+								<VBox id="__hbox2" justifyContent="Center" width="100%" alignItems="Center">
+									<items>
+									<Image xmlns="sap.m" xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" id="__image1" width="140px" press="actionCadastro" src="image/Cadastrar_Cliente.PNG" height="140px" visible="true"/>
+									<Label text="CADASTRAR CLIENTES" width="100%" id="__labe23" textAlign="Left" visible="true"/>
+									</items>
+								</VBox>	
+								<VBox id="__hbox20" justifyContent="Center" width="100%" alignContent="Start" alignItems="Start" direction="Column" renderType="Bare">
+									<items>
+									<Image xmlns="sap.m" xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" id="__image9" width="140px" press="actionCreditoAlterar" src="image/AlterarCredito.PNG" height="140px" visible="true"/>
+									<Label text="ALTERAR CRÉDITO" width="100%" id="__labe25" textAlign="Left" visible="true"/>
+									</items>
+								</VBox>	
+								<VBox id="__hbox10" justifyContent="Center" width="100%" alignContent="Center" alignItems="Center">
+									<items>
+									<Image xmlns="sap.m" xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" id="__image7" width="140px" press="actionCreditoTransfResp" src="image/TransferenciaResponsavel.png" height="140px" visible="true"/>
+									<Label text="TRANSFERIR GRUPO RESPONSÁVEL" width="100%" id="__labe24" textAlign="Left" visible="true"/>
+									</items>
+								</VBox>
+							<!--	<VBox id="__hbox30" justifyContent="Center" width="100%" alignContent="Center" alignItems="Center">
+									<items>
+									<Image xmlns="sap.m" xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" id="__image8" width="140px" press="actionFaturamento" src="img/Comprar.PNG" height="140px" visible="true"/>
+									<Label text="Faturamento" width="100%" id="__labe26" textAlign="Left" visible="true"/>
+									</items>
+								</VBox>-->
+								<HBox id="__hbox4" justifyContent="Center" width="100%">
+									<items>
+										<HBox width="100%" id="__hbox5"/>
+									</items>
+								</HBox>
+							</items>
+							<items> </items>
+						</HBox>
+						
+					</content>
+				</Panel>
+				<Panel id="__panel1" backgroundDesign="Transparent"/>
+				<Panel id="__panel2" backgroundDesign="Transparent"/>
+				<VBox width="100%" direction="Column" id="__vbox0"/>
+				<HBox width="100%" id="__hbox6"/>
+				<HBox width="100%" id="__hbox9"/>
+					  <HBox width="100%" id="__hbox8">
+					  	<HBox width="100%" id="__hbox7"/>
+					   <Image width="500px" id="__image15" src="image/ArcelorMittalLogoGrande.png" press="on"/>	
+					   <HBox width="100%" id="__hbox12"/>
+				</HBox>
+			</content>
+			<footer>
+				<Bar>
+				</Bar>
+			</footer>	
+		</Page>
+	</pages>
+ </App>
+</mvc:View>

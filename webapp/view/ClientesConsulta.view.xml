@@ -1,0 +1,52 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="arcelor.controller.ClientesConsulta">
+	<App>
+		<pages>
+			<Page title="Consulta de Clientes" showNavButton="true" navButtonPress="onNavBack">
+				<subHeader>
+					<Bar>
+						<contentLeft>
+							<SearchField width="100%" placeholder="Pesquisar por Cód. Cliente ou Nome ou CNPJ ou CPF" id="__field3" search="onSearch" maxLength="20" enableSuggestions="true"/>
+						</contentLeft>
+					</Bar>	
+				</subHeader>
+					<content>
+					   <List id="List" items="{ path: '/ClientesSet', sorter: { path: 'Nome' }, length: 30 }" growing="true" growingThreshold="30" itemPress="onItemPress">
+					   	<!--headerToolbar>
+						<Toolbar>
+							<content>
+								<Title text="Products" level="H2"/>
+								<ToolbarSpacer />
+								<Label text="List Item type:" labelFor="state"/>
+								<Select
+									id="state"
+									selectedKey="Inactive"
+									change="handleSelectChange">
+									<items>
+										<core:Item key="Crescente" text="Crescente" />
+										<core:Item key="Descrecente" text="Descrecente" />
+									</items>
+								</Select>
+							</content>
+						</Toolbar>
+					</headerToolbar!--> 
+					    <ObjectListItem type="Navigation" intro="Endereço {Endereco} - Cidade: {Cidade}" id="__item0" press="onItemPress" title="Código Cliente: {Codcliente} / Nome: {Nome} / CNPJ/CPF: {Cnpj}{Cpf}">
+					        <!--attributes>
+					            <ObjectAttribute title="Código Cliente" text="{Codcliente}" id="__attribute0" visible="true"/>
+					        </attributes>
+					        <firstStatus>
+					            <ObjectStatus text="first status text" id="__status0" visible="false"/>
+					        </firstStatus>
+					        <secondStatus>
+					            <ObjectStatus text="second status text" id="__status1" visible="false"/>
+					        </secondStatus!-->
+					     </ObjectListItem>
+					   </List>      
+					</content>
+				<footer>
+					<Bar>
+					</Bar>
+				</footer>	
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

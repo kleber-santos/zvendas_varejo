@@ -1,0 +1,40 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:semantic="sap.m.semantic" 
+          xmlns:f="sap.f" xmlns:u="sap.ui.unified" controllerName="arcelor.controller.Master">
+	
+	<semantic:MasterPage id="page" navButtonPress="onNavBack" showNavButton="false" showSubHeader="false" >
+		<semantic:subHeader>
+			<Bar id="headerBar" visible="false">
+				<contentMiddle>
+					<Button text="Logoff" width="100px" id="__button0" icon="sap-icon://response" press="closeapp"/>
+					<!--SearchField id="searchField" showRefreshButton="{= !${device>/support/touch} }" tooltip="{i18n>masterSearchTooltip}" 
+					width="100%" search="onSearch" visible="false">
+					</SearchField!-->
+				</contentMiddle>
+			</Bar>
+		</semantic:subHeader>
+		<semantic:content>
+			<PullToRefresh id="pullToRefresh" visible="false" refresh="onRefresh"/>
+			<!-- For client side filtering add this to the items attribute:  parameters: {operationMode: 'Client'}}" -->
+			<List id="list" items="{      path: '/MenuSet',      sorter: {       path: 'Icone',       descending: false       },      groupHeaderFactory: '.createGroupHeader'     }" busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}" mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished" selectionChange="onSelectionChange">
+				<infoToolbar>
+					<Toolbar active="true" id="filterBar" press="onOpenViewSettings" visible="false">
+						<Title id="filterBarLabel" text="{masterView>/filterBarLabel}"/>
+					</Toolbar>
+				</infoToolbar>
+				<items>
+					<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" icon="{Icone}" title="{Descricao}" selected="false">
+					</ObjectListItem>
+				</items>
+			<headerToolbar>
+			</headerToolbar>
+			</List>
+		</semantic:content>
+    
+	<semantic:customFooterContent>
+	    	<OverflowToolbarButton icon="sap-icon://log" tittle="Sair" tooltip="Sair" text="Logoff" press="closeapp"/>
+	</semantic:customFooterContent>
+	 
+	</semantic:MasterPage>
+		
+
+</mvc:View>

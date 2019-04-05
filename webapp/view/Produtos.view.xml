@@ -1,0 +1,253 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m" xmlns:f="sap.f" xmlns:u="sap.ui.unified" controllerName="arcelor.controller.Produtos">
+	<!--<semantic:DetailPage id="page" showNavButton="false" title="Produtos" enableScrolling="true">-->
+	<!--	<semantic:content>-->
+		<Page id="page" showNavButton="false" title="Produtos" enableScrolling="true">
+		<!--<landmarkInfo>-->
+		<!--	<PageAccessibleLandmarkInfo-->
+		<!--		rootRole="Region"-->
+		<!--		rootLabel="{i18n>Welcome_rootLabel}"-->
+		<!--		contentRole="Main"-->
+		<!--		contentLabel="{i18n>Welcome_contentLabel}"-->
+		<!--		headerRole="Region"-->
+		<!--		headerLabel="{i18n>Welcome_headerLabel}"/>-->
+		<!--</landmarkInfo>-->
+		<customHeader>
+			<Bar>
+				<contentMiddle>
+					<Title
+						level="H2"
+						tooltip="{i18n>welcomeDescription}"
+						text="Produtos"/>
+				</contentMiddle>
+				<contentRight>
+					<Button
+						id="TotalCarrinho"
+						icon="sap-icon://cart"
+						tooltip="{i18n>avatarButtonTooltip}"
+						press="onVisualizarCarrinho"
+						text="0"/>
+					<!--<Button icon="sap-icon://customer"-->
+					<!--		text="Kleber Moraes" -->
+					<!--        type="Transparent" -->
+					<!--        press="handleUserNamePress">-->
+			  <!--          <layoutData>-->
+			  <!--              <OverflowToolbarLayoutData priority="NeverOverflow" />-->
+			  <!--          </layoutData>-->
+			  <!--      </Button>-->
+				</contentRight>
+			</Bar>
+		</customHeader>
+			<Panel id="__panel0">
+			    <content>
+			    	<Table id="input-DM_DadoMestreOVSet" items="{/DM_DadoMestreOVSet}" visible="false">
+						<columns>
+							<Column hAlign="Left">
+								<Text text="Codconsulta"/>
+							</Column>
+							<Column hAlign="Left">
+								<Text text="Coddadomestre"/>
+							</Column>
+							<Column hAlign="Left">
+								<Text text="Textodadomestre"/>
+							</Column>
+							<Column hAlign="Left">
+								<Text text="Material"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem press="onPress" type="Active">
+								<cells>
+									<Input value="{Codconsulta}"/>
+									<Input value="{Coddadomestre}"/>
+									<Input value="{Textodadomestre}"/>
+									<Input value="{Material}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+			        <HBox width="100%" id="__hbox3">
+					    <items>
+					        <VBox width="100%" direction="Column" id="__vbox0">
+					            <items>
+					                <Image width="90px" height="90px" id="__image11" src="image/BBA.PNG" tooltip="BBA" press="onGrupoMacro1"/>
+					                <Label text="BBA" width="100%" id="__label6" textAlign="Center"/>
+					            </items>
+					        </VBox>
+					        <HBox width="100%" id="__hbox5"/>
+					        <VBox width="100%" direction="Column" id="__vbox1">
+					            <items>
+					        		<Image width="90px" height="90px" id="__image12" src="image/Industria.PNG" tooltip="Indústria" press="onGrupoMacro2"/>
+					        		<Label text="INDÚSTRIA" width="100%" id="__label7" textAlign="Center"/>
+					            </items>
+					        </VBox>
+					        <HBox width="100%" id="__hbox6"/>
+					        <VBox width="100%" direction="Column" id="__vbox2">
+					            <items>
+					        		<Image width="90px" height="90px" id="__image13" src="image/ConstrucaoCivil.PNG" tooltip="Construção Civil" press="onGrupoMacro3"/>
+					        		<Label text="CONSTRUÇÃO CIVIL" width="100%" id="__label8" textAlign="Center"/>
+					        	</items>
+					        </VBox>
+					        <HBox width="100%" id="__hbox7"/>
+					        <VBox width="100%" direction="Column" id="__vbox3">
+					            <items>
+					        		<Image width="90px" height="90px" id="__image14" src="image/Planos.PNG" tooltip="Planos" press="onGrupoMacro4"/>
+					        		<Label text="PLANOS" width="100%" id="__label9" textAlign="Center"/>
+					           </items>
+					        </VBox>
+					        <HBox width="100%" id="__hbox8"/>
+					        <VBox width="100%" direction="Column" id="__vbox4">
+					            <items>
+					        		<Image width="90px" height="90px" id="__image15" src="image/Tubos.PNG" tooltip="Tubos" press="onGrupoMacro5"/>
+					        		<Label text="TUBOS" width="100%" id="__label20" textAlign="Center"/>
+					        	</items>
+					        </VBox>
+					        <HBox width="100%" id="__hbox9"/>
+					        <VBox width="100%" direction="Column" id="__vbox5">
+					            <items>
+					        		<Image width="90px" height="90px" id="__image16" src="image/Inox.PNG" tooltip="Inox" press="onGrupoMacro6"/>
+					        		<Label text="INOX" width="100%" id="__label21" textAlign="Center"/>
+					        	</items>
+					        </VBox>
+					        <HBox width="100%" id="__hbox10"/>
+					        <VBox width="100%" direction="Column" id="__vbox6">
+					            <items>
+					        		<Image width="90px" height="90px" id="__image17" src="image/Complementares.PNG" tooltip="Complementares" press="onGrupoMacro7"/>
+					        		<Label text="COMPLEMENTARES" width="100%" id="__label22" textAlign="Center"/>
+					        	</items>
+					        </VBox>
+					        <HBox width="100%" id="__hbox12"/>
+					        <VBox width="100%" direction="Column" id="__vbox7">
+					            <items>
+					        		<Image width="90px" height="90px" id="__image18" src="image/Acindar.png" tooltip="Acindar" press="onGrupoMacro8"/>
+					        		<Label text="ACINDAR" width="100%" id="__label23" textAlign="Center"/>
+					        	</items>
+					        </VBox>
+					        <HBox width="100%" id="__hbox13"/>
+					        <VBox width="100%" direction="Column" id="__vbox8">
+					            <items>
+					        		<Image width="90px" height="90px" id="__image19" src="image/Perfil_Importado.png" tooltip="Perfil Importado" press="onGrupoMacro9"/>
+					        		<Label text="PERFIL IMPORTADO" width="100%" id="__label24" textAlign="Center"/>
+					        	</items>
+					        </VBox>
+					        <HBox width="100%" id="__hbox14"/>
+					        <VBox width="100%" direction="Column" id="__vbox9">
+					            <items>
+					        		<Image width="90px" height="90px" id="__image20" src="image/SteelDeck.png" tooltip="Steel Deck" press="onGrupoMacro10"/>
+					        		<Label text="STEEL DECK" width="100%" id="__label25" textAlign="Center"/>
+					        	</items>
+					        </VBox>
+					    </items>
+					</HBox>
+			    </content>
+			</Panel>
+			<Panel>
+				<Toolbar>
+					    <Text id="labelGrupoMercadoria" text="" visible="false"/>
+						<ToolbarSpacer/>
+						<content>
+							    <Panel id="__panel2">
+									<content>
+									   <MultiComboBox selectionFinish="onCategoriaFilter" id="combo1" placeholder="Filtro Categoria" width="300px" items="{ path: '/CategoriaSet', sorter: { path: 'Grupomat' } }">
+								         <core:Item key="{Grupomat}" text="{Grupomat} - {Descrmat}"/>
+								       </MultiComboBox>
+									</content>
+								</Panel>
+						</content>
+						<content>
+							    <Panel id="__panel3" backgroundDesign="Transparent">
+									<content>
+								        <ComboBox id="combo2" placeholder="Filtro Loja" width="300px" items="{ path: '/LojasSet', sorter: { path: 'Loja' } }" selectionChange="onLojaFilter" fieldGroupIds="">
+									         <!--core:Item key="" text=""/!-->
+									         <core:Item key="{Loja}" text="{Loja}"/>
+									    </ComboBox>
+									</content>
+								</Panel>
+						</content>
+						<content>
+							    <Panel id="__panel4" backgroundDesign="Transparent">
+									<content>
+								        	<!--ComboBox placeholder="Imagem/Grid" change="onChangeImageGrid" id="imagemGrid">
+												<core:Item key="Imagem" text="Imagem"/>
+												<core:Item key="Grid" text="Grid"/>
+											</ComboBox!-->
+									</content>
+								</Panel>
+						</content>
+				</Toolbar>
+			</Panel>
+		 <!--content!-->	
+			<Table id="List" items="{/ProdutosSet}" showNoData="true" fixedLayout="false" width="auto" growing="true">
+				<headerToolbar>
+					<Toolbar>
+						<Label text="" width="100%" id="label1" visible="true"/>
+						<ToolbarSpacer/>
+						<SearchField id="searchField" search="onSearch" placeholder="Filtro" tooltip="{i18n>worklistSearchTooltip}" width="auto"/>
+					<content/>
+					</Toolbar>
+				</headerToolbar>
+			<!--ScrollContainer horizontal="false" vertical="true" height="100%"!-->
+				<columns>
+					<Column id="nameColumn1" hAlign="Left" width="8%">
+						<Text id="nameColumnTitle" text="Cód. do Produto"/>
+					</Column>
+					<Column id="nameColumn2" hAlign="Left">
+        				<Text text="Descrição do Produto"/>
+    				</Column>
+    				<Column id="nameColumn4" hAlign="Left" width="10%">
+        				<Text text="Preço"/>
+					</Column>
+					<Column id="nameColumn5" hAlign="Left" width="10%">
+        				<Text text="Estoque"/>
+    				</Column>
+    				<Column id="nameColumn8" hAlign="Left" width="8%">
+        				<Text text="Loja"/>
+    				</Column>
+    				<Column id="nameColumn6" hAlign="Left">
+        				<Text text="Unidade de Medida"/>
+    				</Column>
+    				<Column id="nameColumn7" hAlign="Left">
+        				<Text text="Grupo de Mercadoria"/>
+    				</Column>
+    				<Column id="nameColumnCarrinho" hAlign="Left">
+        				<Text text=""/>
+    				</Column>
+				</columns>
+				<items>
+					<ColumnListItem press="onPress" type="Navigation">
+						<cells>
+							<ObjectNumber number="{= parseFloat(${Codproduto}) }"/>
+							<Text text="{Descrprod}"/>
+							<ObjectNumber number="{ path: 'Precodezx', type: 'sap.ui.model.odata.type.Decimal', constraints: {precision: 11, scale: 2} }"/>
+							<ObjectNumber number="{ path: 'Estoque',  type: 'sap.ui.model.odata.type.Decimal', constraints: {precision: 10, scale: 3} }"/>
+							<Text text="{Loja}"/>
+							<Text text="{Undmedida}"/>
+							<Text text="{Grupomerc}"/>
+							<Button id="input-carrinho" icon="sap-icon://cart-4" visible="{= ${path: 'Estoque'} > 0 ? true : false }" press="onAddCarrinho" enabled="true"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			<!--/ScrollContainer!-->
+			</Table>
+		<!--/content!-->	
+				<List id="ListImagem" items="{/ProdutosSet}" visible="false">
+					<headerToolbar>
+						<Toolbar>
+							<Label text="teste" width="100%" id="label30" visible="true"/>
+							<ToolbarSpacer/>
+							<SearchField id="searchField1" search="onSearch" placeholder="Filtro" tooltip="{i18n>worklistSearchTooltip}" width="auto"/>
+							<content/>
+						</Toolbar>
+					</headerToolbar>
+					<items>
+						<StandardListItem title="Cód. {= parseFloat(${Codproduto}) } - {Descrprod} - Loja: {Loja}" description="{Precodezx}" icon="{Urlprod}" iconDensityAware="false" iconInset="false" press="onPress" type="Navigation"/>
+					</items>
+				</List>
+		<footer>
+			<Bar>
+			</Bar>
+		</footer>	
+	<!--	</semantic:content>-->
+	
+	<!--</semantic:DetailPage>-->
+	</Page>
+</mvc:View>
