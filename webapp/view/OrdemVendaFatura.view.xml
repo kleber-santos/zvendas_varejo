@@ -132,7 +132,7 @@
 					<Column id="nameColumn10" hAlign="Left" width="8%">
 						<Text text="Fatura"/>
 					</Column>
-				</columns>
+				</columns> 
 				<items> 
 					<ColumnListItem press="onPress" class="statusUIIcon">
 						<cells>

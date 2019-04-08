@@ -307,7 +307,7 @@ sap.ui.define([
 
 				}
 
-			}
+			} 
 
 			// Busca de Ordens de Venda
 			this.getView().setBusy(true);
