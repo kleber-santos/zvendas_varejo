@@ -309,7 +309,7 @@ sap.ui.define([
 
 			} 
 
-			// Busca de Ordens de Venda
+			// Busca de Ordens de Venda    
 			this.getView().setBusy(true);
 			this.getModel().read("/OrdemVendaFaturaSet", {
 				filters: filters,
