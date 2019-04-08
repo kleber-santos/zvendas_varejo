@@ -133,7 +133,7 @@
 						<Text text="Fatura"/>
 					</Column>
 				</columns>
-				<items>
+				<items> 
 					<ColumnListItem press="onPress" class="statusUIIcon">
 						<cells>
 							<ObjectIdentifier title="{= parseFloat(${OVModel>Ordem}) }" titleActive="true" titlePress="handleObjectIdentifierPress"/>

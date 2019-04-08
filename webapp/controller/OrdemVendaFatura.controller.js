@@ -313,7 +313,7 @@ sap.ui.define([
 			this.getView().setBusy(true);
 			this.getModel().read("/OrdemVendaFaturaSet", {
 				filters: filters,
-				success: function(oSalesOrders) {
+				success: function(oSalesOrders) { 
 					this.getView().setBusy(false);
 					this.getModel("OVModel").setData({
 						OVData: oSalesOrders.results
