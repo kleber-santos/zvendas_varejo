@@ -58,46 +58,52 @@
 					</HBox>
 				</content>
 			</Panel>
-			<Panel id="__panel2" visible= "false">
+			<Panel id="__panel2" visible="true">
 				<content>
 					<HBox justifyContent="SpaceBetween" width="100%">
 						<!--<HBox justifyContent="SpaceBetween" width="100%">
 						<VBox width="100%">-->
 						<VBox width="25%">
 							<Label text="Status Geral:"/>
-							<ComboBox id="combo-geral" placeholder="" width="85%" items="{/modelDataStatusGeral}" selectionChange="onSearchCombo" enabled="true" fieldGroupIds="">
+							<ComboBox id="combo-geral" placeholder="" width="85%"
+								items="{ path: '/DM_FaturarOVSet', filters : [{ path:'Codconsulta', operator:'EQ', value1:'GL'}] }" selectionChange="onSearchCombo"
+								enabled="true" fieldGroupIds="" selectedKey="{OVModel>/GeralFilter}">
 								<core:Item key="{Coddadomestre}" text="{Coddadomestre} - {Textodadomestre}"/>
 							</ComboBox>
 						</VBox>
 						<VBox width="25%">
 							<Label text="Limbo:"/>
-							<ComboBox id="combo-limbo" placeholder="" width="85%" items="{/modelDataLimbo}" selectionChange="onSearchCombo" enabled="true"
-								fieldGroupIds="">
+							<ComboBox id="combo-limbo" placeholder="" width="85%"
+								items="{ path: '/DM_FaturarOVSet', filters : [{ path:'Codconsulta', operator:'EQ', value1:'LI'}] }" selectionChange="onSearchCombo"
+								enabled="true" fieldGroupIds="" selectedKey="{OVModel>/LimboFilter}">
 								<core:Item key="{Coddadomestre}" text="{Coddadomestre} - {Textodadomestre}"/>
 							</ComboBox>
 						</VBox>
 						<VBox width="25%">
 							<Label text="Crédito:"/>
-							<ComboBox id="combo-credito" placeholder="" width="85%" items="{/modelDataCredito}" selectionChange="onSearchCombo" enabled="true" fieldGroupIds="">
+							<ComboBox id="combo-credito" placeholder="" width="85%" items="{ path: '/DM_FaturarOVSet', filters : [{ path:'Codconsulta', operator:'EQ', value1:'CR'}] }" selectionChange="onSearchCombo" enabled="true"
+								fieldGroupIds="" selectedKey="{OVModel>/CreditoFilter}">
 								<core:Item key="{Coddadomestre}" text="{Coddadomestre} - {Textodadomestre}"/>
 							</ComboBox>
 						</VBox>
 						<VBox width="25%">
 							<Label text="Remessa:"/>
-							<ComboBox id="combo-remessa" placeholder="" width="85%" items="{/modelDataRemessa}" selectionChange="onSearchCombo" enabled="true" fieldGroupIds="">
+							<ComboBox id="combo-remessa" placeholder="" width="85%" items="{ path: '/DM_FaturarOVSet', filters : [{ path:'Codconsulta', operator:'EQ', value1:'RE'}] }" selectionChange="onSearchCombo" enabled="true"
+								fieldGroupIds="" selectedKey="{OVModel>/RemessaFilter}">
 								<core:Item key="{Coddadomestre}" text="{Coddadomestre} - {Textodadomestre}"/>
 							</ComboBox>
 						</VBox>
 						<VBox width="25%">
 							<Label text="Fatura:"/>
-							<ComboBox id="combo-fatura" placeholder="" width="85%" items="{/modelDataFatura}" selectionChange="onSearchCombo" enabled="true" fieldGroupIds="">
+							<ComboBox id="combo-fatura" placeholder="" width="85%" items="{ path: '/DM_FaturarOVSet', filters : [{ path:'Codconsulta', operator:'EQ', value1:'FA'}] }" selectionChange="onSearchCombo" enabled="true"
+								fieldGroupIds="" selectedKey="{OVModel>/FaturaFilter}">
 								<core:Item key="{Coddadomestre}" text="{Coddadomestre} - {Textodadomestre}"/>
 							</ComboBox>
 						</VBox>
 					</HBox>
 				</content>
 			</Panel>
-			<Table id="List" items="{/OrdemVendaFaturaSet}" showNoData="true" fixedLayout="false" width="auto" growing="true" mode="MultiSelect">
+			<Table id="List" items="{OVModel>/OVData}" showNoData="true" fixedLayout="false" width="auto" growing="true" mode="MultiSelect">
 				<columns>
 					<Column id="nameColumn1" hAlign="Left" width="10%">
 						<Text id="nameColumnTitle" text="N° OV"/>
@@ -128,28 +134,17 @@
 					</Column>
 				</columns>
 				<items>
-					<!--<ColumnListItem press="onPress" type="Navigation">-->
 					<ColumnListItem press="onPress" class="statusUIIcon">
 						<cells>
-							<ObjectIdentifier title="{= parseFloat(${Ordem}) }" titleActive="true" titlePress="handleObjectIdentifierPress"/>
-							<!--	<Text text="{= parseFloat(${Ordem}) }"/>
-						<ObjectNumber number="{= parseFloat(${Ordem}) }"/>-->
-							<Text text="{DescCliente}"/>
-							<Text text="{ path: 'ValorOrdem', type: 'sap.ui.model.odata.type.Decimal', constraints: {precision: 15, scale: 2} }"/>
-							<!--<ObjectNumber number="{ path: 'ValorOrdem', type: 'sap.ui.model.odata.type.Decimal', constraints: {precision: 15, scale: 2} }"/>-->
-							<!--<ObjectStatus icon="{path: 'StatusGlobal', formatter: '.status'}" state="Sucess"/>-->
-							<arcelor:StatusIcon src="{path: 'StatusGlobal', formatter: '.status'}" status="{StatusGlobal}"></arcelor:StatusIcon>
-							<Text text="{path: 'GlobalTxt'}"/>
-							<arcelor:StatusIcon src="{path: 'StatusLimbo', formatter: '.status'}" status="{StatusLimbo}"></arcelor:StatusIcon>
-							<arcelor:StatusIcon src="{path: 'StatusCred', formatter: '.status'}" status="{StatusCred}"></arcelor:StatusIcon>
-							<arcelor:StatusIcon src="{path: 'StatusReme', formatter: '.status'}" status="{StatusReme}"></arcelor:StatusIcon>
-							<arcelor:StatusIcon src="{path: 'StatusFatura', formatter: '.status'}" status="{StatusFatura}"></arcelor:StatusIcon>
-							<!--<ObjectStatus
-				class="sapUiSmallMarginBottom"
-				title="Test"
-				active="true"
-				state="Success"
-				icon="sap-icon://alert" />-->
+							<ObjectIdentifier title="{= parseFloat(${OVModel>Ordem}) }" titleActive="true" titlePress="handleObjectIdentifierPress"/>
+							<Text text="{OVModel>DescCliente}"/>
+							<Text text="{ path: 'OVModel>ValorOrdem', type: 'sap.ui.model.odata.type.Decimal', constraints: {precision: 15, scale: 2} }"/>
+							<arcelor:StatusIcon src="{path: 'OVModel>StatusGlobal', formatter: '.status'}" status="{OVModel>StatusGlobal}"></arcelor:StatusIcon>
+							<Text text="{path: 'OVModel>GlobalTxt'}"/>
+							<arcelor:StatusIcon src="{path: 'OVModel>StatusLimbo', formatter: '.status'}" status="{OVModel>StatusLimbo}"></arcelor:StatusIcon>
+							<arcelor:StatusIcon src="{path: 'OVModel>StatusCred', formatter: '.status'}" status="{OVModel>StatusCred}"></arcelor:StatusIcon>
+							<arcelor:StatusIcon src="{path: 'OVModel>StatusReme', formatter: '.status'}" status="{OVModel>StatusReme}"></arcelor:StatusIcon>
+							<arcelor:StatusIcon src="{path: 'OVModel>StatusFatura', formatter: '.status'}" status="{OVModel>StatusFatura}"></arcelor:StatusIcon>
 						</cells>
 					</ColumnListItem>
 				</items>
@@ -158,14 +153,13 @@
 		<footer>
 			<Toolbar>
 				<content>
-			
 					<Button id="button-popover" icon="sap-icon://message-popup" visible="false" text="{/messagesLength}" press="handleMessagePopoverPress"/>
 					<ToolbarSpacer/>
-					<Button id="button-liberarlimbo"   text="Liberar Limbo"   press="handleLiberarLimboPress"/>
+					<Button id="button-liberarlimbo" text="Liberar Limbo" press="handleLiberarLimboPress"/>
 					<Button id="button-liberarcredito" type="Accept" text="Liberar Crédito" press="handleLiberarCreditoPress"></Button>
-					<Button id="button-faturar"        type="Accept" text="Faturar OV"      press="handleFaturarOVPress"></Button>
+					<Button id="button-faturar" type="Accept" text="Faturar OV" press="handleFaturarOVPress"></Button>
 				</content>
-			</Toolbar>	
+			</Toolbar>
 		</footer>
-	</Page>	
+	</Page>
 </mvc:View>

@@ -43,6 +43,18 @@ sap.ui.define([
 
 			this.setInitalDateValue();
 
+			// Model Inicial
+			if (!this.getModel("OVModel")) {
+				this.setModel(new JSONModel(), "OVModel");
+			}
+
+			this.getRouter().getRoute("OrdemVendaFatura").attachPatternMatched(this._onObjectMatched.bind(this), this);
+
+		},
+
+		_onObjectMatched: function(oEvent) {
+			this.getModel("OVModel").setData({});
+			this.getModel("OVModel").refresh(true);
 		},
 
 		onBeforeRendering: function() {
@@ -116,33 +128,6 @@ sap.ui.define([
 
 		},
 
-		iconColor: function(Status) {
-
-			var color;
-
-			return color = "#9dd53a";
-
-			/*switch (Status) {
-				case "L0":
-					color = "#9dd53a";
-					break;
-				case "L1":
-					color = "#9dd53a";
-					break;
-				case "L2":
-					color = "#DF013A";
-					break;
-				case "L3":
-					color = "#DF013A";
-					break;
-				default:
-					break;
-			}
-
-			return color;*/
-
-		},
-
 		onAddToken: function() {
 
 			var oMultiInput = this.getView().byId("multiinput-ordem");
@@ -189,151 +174,37 @@ sap.ui.define([
 
 		},
 
-		_loadMasterData: function() {
-
-			this._readListMasterData();
-		},
-
-		_readListMasterData: function() {
-
-			var aDataStatusGeral = []; // GL
-			var aDataLimbo = []; // LI
-			var aDataCredito = []; // CR
-			var aDataRemessa = []; // RE
-			var aDataFatura = []; // FA
-
-			if (aDataCargaDados === 0) {
-
-				var table = this.getView().byId("input-dadosMestres");
-				var rowItems = table.getItems(); //getSelectedItems();
-
-				if (rowItems.length === 0) {
-					return false;
-				}
-
-				aDataCargaDados = 1;
-
-				for (var i = 0; i < rowItems.length; i++) {
-					var item = rowItems[i];
-
-					var Cells = item.getCells();
-					// Get ID and Name
-					var Codconsulta = Cells[0].getValue();
-					var Coddadomestre = Cells[1].getValue();
-					var Textodadomestre = Cells[2].getValue();
-
-					if (Codconsulta === "GL") {
-						aDataStatusGeral.push({
-							Codconsulta: Codconsulta,
-							Coddadomestre: Coddadomestre,
-							Textodadomestre: Textodadomestre
-						});
-					}
-
-					if (Codconsulta === "LI") {
-						aDataLimbo.push({
-							Codconsulta: Codconsulta,
-							Coddadomestre: Coddadomestre,
-							Textodadomestre: Textodadomestre
-						});
-					}
-
-					if (Codconsulta === "CR") {
-						aDataCredito.push({
-							Codconsulta: Codconsulta,
-							Coddadomestre: Coddadomestre,
-							Textodadomestre: Textodadomestre
-						});
-					}
-
-					if (Codconsulta === "RE") {
-						aDataRemessa.push({
-							Codconsulta: Codconsulta,
-							Coddadomestre: Coddadomestre,
-							Textodadomestre: Textodadomestre
-						});
-					}
-
-					if (Codconsulta === "FA") {
-						aDataFatura.push({
-							Codconsulta: Codconsulta,
-							Coddadomestre: Coddadomestre,
-							Textodadomestre: Textodadomestre
-						});
-					}
-
-				}
-
-				var oModelStatusGeral = new sap.ui.model.json.JSONModel();
-				oModelStatusGeral.setData({
-					modelDataStatusGeral: aDataStatusGeral
-				});
-				var oDataStatusGeral = this.getView().byId("combo-geral");
-				oDataStatusGeral.setModel(oModelStatusGeral);
-
-				var oModelLimbo = new sap.ui.model.json.JSONModel();
-				oModelLimbo.setData({
-					modelDataLimbo: aDataLimbo
-				});
-				var oDataLimbo = this.getView().byId("combo-limbo");
-				oDataLimbo.setModel(oModelLimbo);
-
-				var oModelCredito = new sap.ui.model.json.JSONModel();
-				oModelCredito.setData({
-					modelDataCredito: aDataCredito
-				});
-				var oDataCredito = this.getView().byId("combo-credito");
-				oDataCredito.setModel(oModelCredito);
-
-				var oModelRemessa = new sap.ui.model.json.JSONModel();
-				oModelRemessa.setData({
-					modelDataRemessa: aDataRemessa
-				});
-				var oDataRemessa = this.getView().byId("combo-remessa");
-				oDataRemessa.setModel(oModelRemessa);
-
-				var oModelFatura = new sap.ui.model.json.JSONModel();
-				oModelFatura.setData({
-					modelDataFatura: aDataFatura
-				});
-				var oDataFatura = this.getView().byId("combo-fatura");
-				oDataFatura.setModel(oModelFatura);
-
-			}
-
-		},
-
 		onSearchCombo: function(oEvent) {
+			var aFilters = [];
+			var oOVModelData = this.getView().getModel("OVModel").getData();
 
-			var oTable, m, data;
-			var oData = [];
-			var oDataAux = [];
-			var oBindingContext = oEvent.getSource();
+			if (oOVModelData.OVData.length > 0) {
+				for (var sProperty in oOVModelData) {
+					switch (sProperty) {
+						case "GeralFilter":
+							aFilters.push( new Filter("StatusGlobal", FilterOperator.EQ, oOVModelData[sProperty].substring(1, 3)));
+							break;
+						case "LimboFilter":
+							aFilters.push( new Filter("StatusLimbo", FilterOperator.EQ, oOVModelData[sProperty].substring(1, 3)));
+							break;
+						case "CreditoFilter":
+							aFilters.push( new Filter("StatusCred", FilterOperator.EQ, oOVModelData[sProperty].substring(1, 3)));
+							break;
+						case "RemessaFilter":
+							aFilters.push( new Filter("StatusReme", FilterOperator.EQ, oOVModelData[sProperty].substring(1, 3)));
+							break;
+						case "FaturaFilter":
+							aFilters.push( new Filter("StatusFatura", FilterOperator.EQ, oOVModelData[sProperty].substring(1, 3)));
+							break;
+						default:
+							break;
+					}
+				}
 
-			oTable = this.getView().byId("List");
-			m = oTable.getModel();
-			data = m.getProperty("/OrdemVendaFaturaSet");
-
-			oData = m.oData;
-
-			/*			var list = this.getView().byId("List");
-						var binding = list.getBinding("items");
-						aDataTable = list.getItems();
-
-						for (var i = 0; i < aDataTable.length; i++) {
-
-							if (i > 5) {
-								aDataTable.splice(i, 1);
-							}
-
-						}
-
-						var oModel = list.getModel();
-						oModel.setData({
-							OrdemVendaFaturaSet: aDataTable
-						});
-
-						list.setModel(oModel);*/
+				if (aFilters.length > 0) {
+					this.getView().byId("List").getBinding("items").filter(aFilters);
+				}
+			}
 
 		},
 
@@ -351,11 +222,13 @@ sap.ui.define([
 
 			this.setInitalDateValue();
 
+			this.getModel("OVModel").setData({});
+			this.getModel("OVModel").refresh(true);
 		},
 
 		onSearch: function() {
 
-			this._loadMasterData();
+			//this._loadMasterData();
 
 			var thisView = this;
 
@@ -436,40 +309,32 @@ sap.ui.define([
 
 			}
 
-			var list = thisView.getView().byId("List");
-			var binding = list.getBinding("items");
-			binding.filter(filters);
+			// Busca de Ordens de Venda
+			this.getView().setBusy(true);
+			this.getModel().read("/OrdemVendaFaturaSet", {
+				filters: filters,
+				success: function(oSalesOrders) {
+					this.getView().setBusy(false);
+					this.getModel("OVModel").setData({
+						OVData: oSalesOrders.results
+					});
+					this.getModel("OVModel").refresh(true);
+					this.getView().byId("List").getBinding("items").filter([]);
+				}.bind(this),
+				error: function(oError) {
+					this.getView().setBusy(false);
+					MessageBox.error('Erro ao buscar Ordens de Venda', {
+						title: "ArcelorMittal",
+						styleClass: "sapUiSizeCompact"
+					});
+				}.bind(this)
+			});
 
 		},
 
 		handleSearchClientes: function(oEvent) {
 
 			this.onSearchClientes(oEvent);
-
-			/*var filters = [];
-			var query = oEvent.getParameter("value");
-			var query2 = query;
-			query = this.utilFormatterCPFCNPJClearSearch(query);
-
-			if ((query && query.length > 0) && (query.trim() !== "")) {
-
-				var filter;
-
-				if ($.isNumeric(query) && query.length === 11) {
-					filter = new sap.ui.model.Filter("Cpf", sap.ui.model.FilterOperator.Contains, query);
-				}
-				if ($.isNumeric(query) && query.length < 11) {
-					filter = new sap.ui.model.Filter("Codcliente", sap.ui.model.FilterOperator.Contains, query);
-				} else if ($.isNumeric(query) && query.length > 11) {
-					filter = new sap.ui.model.Filter("Cnpj", sap.ui.model.FilterOperator.Contains, query);
-				} else if (!$.isNumeric(query)) {
-					filter = new sap.ui.model.Filter("Nome", sap.ui.model.FilterOperator.Contains, query2);
-				}
-				filters.push(filter);
-			}
-
-			var binding = oEvent.getSource().getBinding("items");
-			binding.filter(filters);*/
 
 		},
 
@@ -566,16 +431,6 @@ sap.ui.define([
 
 			}
 
-			/*if (aItems[indice].getBindingContext().getProperty("StatusLimbo") !== "L3") {
-
-				MessageBox.error('Documento não permite liberar Limbo!', {
-					title: "ArcelorMittal",
-					styleClass: "sapUiSizeCompact"
-				});
-
-				return false;
-			}*/
-
 			var ordem = aItems[indice].getBindingContext().getProperty("Ordem");
 
 			var oModel = this.getView().getModel();
@@ -669,15 +524,6 @@ sap.ui.define([
 
 			}
 
-			/*if (aItems[indice].getBindingContext().getProperty("StatusCred") !== "L3") {
-
-				MessageBox.error('Documento não permite liberar Crédito!', {
-					styleClass: "sapUiSizeCompact"
-				});
-
-				return false;
-			}*/
-
 			var ordem = aItems[indice].getBindingContext().getProperty("Ordem");
 
 			var oModel = this.getView().getModel();
@@ -758,27 +604,6 @@ sap.ui.define([
 
 			}
 
-			/*if (qtdItems > 1) {
-
-				MessageBox.error('Selecionar apenas um item!', {
-					title: "ArcelorMittal",
-					styleClass: "sapUiSizeCompact"
-				});
-
-				return false;
-
-			}*/
-
-			/*if (aItems[indice].getBindingContext().getProperty("StatusFatura") !== "L3") {
-
-				MessageBox.error('Documento não permite liberar Crédito!', {
-					title: "ArcelorMittal",
-					styleClass: "sapUiSizeCompact"
-				});
-
-				return false;
-			}*/
-
 			var oModel = this.getView().getModel();
 
 			var oData = {
@@ -851,9 +676,6 @@ sap.ui.define([
 				}
 
 			});
-
-			//thisView.getView().setBusy(true);
-			//	oModel.submitChanges();
 
 		},
 
